@@ -1,0 +1,297 @@
+/* =========================================================
+   Cali Vigilante — styles.css
+   ========================================================= */
+
+:root {
+  --color-fondo: #f4f5f7;
+  --color-primario: #7a1f2b;
+  --color-primario-oscuro: #57151d;
+  --color-texto: #212529;
+  --color-tarjeta: #ffffff;
+  --radio-borde: 8px;
+  --espaciado: 1rem;
+}
+
+/* Variables alternativas para el tema oscuro */
+body.dark-mode {
+  --color-fondo: #121417;
+  --color-texto: #e6e6e6;
+  --color-tarjeta: #1e2126;
+  --color-primario: #b34754;
+  --color-primario-oscuro: #7a1f2b;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+  line-height: 1.5;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* ---------- Cabecera ---------- */
+.site-header {
+  background-color: var(--color-primario);
+  color: white;
+  padding: 1.5rem 2rem;
+}
+
+.site-header h1 {
+  margin: 0 0 0.25rem 0;
+}
+
+.tagline {
+  margin: 0 0 1rem 0;
+  opacity: 0.9;
+}
+
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.boton-tema {
+  align-self: flex-start;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: white;
+  padding: 0.4rem 0.9rem;
+  border-radius: var(--radio-borde);
+  cursor: pointer;
+  margin-bottom: 1rem;
+  font: inherit;
+}
+
+.boton-tema:hover {
+  background: rgba(255, 255, 255, 0.28);
+}
+
+.contador-casos {
+  font-size: 0.85rem;
+  opacity: 0.9;
+  margin: 0 0 1rem 0;
+}
+
+.main-nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+  padding: 0;
+  margin: 0;
+  flex-wrap: wrap;
+}
+
+.main-nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.main-nav a:hover {
+  text-decoration: underline;
+}
+
+/* ---------- Contenido principal ---------- */
+main {
+  max-width: 960px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+section {
+  background-color: var(--color-tarjeta);
+  border-radius: var(--radio-borde);
+  padding: 1.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+/* ---------- Formularios ---------- */
+#form-reporte,
+#form-reportar-completo {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 480px;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.campo label {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.campo .ayuda {
+  font-size: 0.78rem;
+  color: #777;
+}
+
+.campo input,
+.campo textarea,
+.campo select {
+  padding: 0.6rem;
+  border: 1px solid #ccc;
+  border-radius: var(--radio-borde);
+  font: inherit;
+  background-color: var(--color-tarjeta);
+  color: var(--color-texto);
+}
+
+/* Resaltar en rojo los campos inválidos tras intento de envío */
+.campo input:invalid:not(:placeholder-shown),
+.campo textarea:invalid:not(:placeholder-shown) {
+  border-color: #c0392b;
+}
+
+.campo input:focus:invalid,
+.campo textarea:focus:invalid {
+  outline: 2px solid #c0392b;
+  outline-offset: 1px;
+}
+
+button[type="submit"] {
+  align-self: flex-start;
+  background-color: var(--color-primario);
+  color: white;
+  border: none;
+  padding: 0.7rem 1.4rem;
+  border-radius: var(--radio-borde);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: var(--color-primario-oscuro);
+}
+
+.mensaje-exito {
+  background-color: #e6f4ea;
+  color: #1e7a34;
+  border: 1px solid #b7e0c2;
+  border-radius: var(--radio-borde);
+  padding: 0.75rem 1rem;
+  font-size: 0.9rem;
+  max-width: 480px;
+}
+
+body.dark-mode .mensaje-exito {
+  background-color: #16301f;
+  color: #8fe0a8;
+  border-color: #2b5c3a;
+}
+
+/* ---------- Controles de búsqueda / filtro / orden ---------- */
+.controles-casos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: flex-end;
+  margin-bottom: 1.5rem;
+}
+
+.controles-casos .campo {
+  flex: 1 1 200px;
+}
+
+.boton-secundario {
+  background-color: transparent;
+  border: 1px solid var(--color-primario);
+  color: var(--color-primario);
+  padding: 0.6rem 1rem;
+  border-radius: var(--radio-borde);
+  cursor: pointer;
+  font: inherit;
+  height: fit-content;
+}
+
+.boton-secundario:hover {
+  background-color: var(--color-primario);
+  color: white;
+}
+
+/* ---------- Grilla de tarjetas (CSS Grid) ---------- */
+.casos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1rem;
+}
+
+.tarjeta-caso {
+  border: 1px solid #e2e2e2;
+  border-radius: var(--radio-borde);
+  padding: 1rem;
+  background-color: var(--color-fondo);
+}
+
+body.dark-mode .tarjeta-caso {
+  border-color: #2f333a;
+}
+
+.tarjeta-caso h3 {
+  margin-top: 0;
+  font-size: 1rem;
+  color: var(--color-primario-oscuro);
+}
+
+body.dark-mode .tarjeta-caso h3 {
+  color: var(--color-primario);
+}
+
+.tarjeta-caso .meta {
+  font-size: 0.8rem;
+  color: #888;
+}
+
+.sin-casos {
+  color: #888;
+  font-style: italic;
+}
+
+/* ---------- Pie de página ---------- */
+.site-footer {
+  text-align: center;
+  padding: 1.5rem;
+  font-size: 0.85rem;
+  color: #888;
+}
+
+/* ---------- Responsive avanzado ---------- */
+@media (max-width: 600px) {
+  .site-header {
+    padding: 1.25rem 1.25rem;
+  }
+
+  .main-nav ul {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .header-top {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .controles-casos {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  main {
+    margin: 1.25rem auto;
+  }
+}

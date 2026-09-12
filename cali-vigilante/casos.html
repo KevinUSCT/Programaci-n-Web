@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Casos registrados — Cali Vigilante</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-top">
+      <div>
+        <h1>Cali Vigilante</h1>
+        <p class="tagline">Registro ciudadano de presuntos abusos de autoridad</p>
+      </div>
+      <button id="boton-tema" class="boton-tema" aria-pressed="false">
+        🌙 Modo oscuro
+      </button>
+    </div>
+
+    <p id="contador-casos" class="contador-casos">0 casos registrados</p>
+
+    <nav class="main-nav">
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="reportar.html">Reportar un caso</a></li>
+        <li><a href="casos.html">Ver casos registrados</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="lista-todos-casos" aria-labelledby="titulo-todos-casos">
+      <h2 id="titulo-todos-casos">Casos registrados</h2>
+
+      <div class="controles-casos">
+        <div class="campo">
+          <label for="buscar-caso">Buscar por lugar o palabra clave</label>
+          <input type="search" id="buscar-caso" placeholder="Ej: Comuna 15, ESMAD, marcha...">
+        </div>
+
+        <div class="campo">
+          <label for="filtro-autoridad">Filtrar por autoridad</label>
+          <select id="filtro-autoridad">
+            <option value="todas">Todas</option>
+            <option value="policia">Policía Nacional</option>
+            <option value="esmad">ESMAD</option>
+            <option value="ejercito">Ejército</option>
+            <option value="otra">Otra</option>
+          </select>
+        </div>
+
+        <button id="boton-ordenar" class="boton-secundario" type="button">
+          ⬇️ Más recientes primero
+        </button>
+      </div>
+
+      <div id="contenedor-todos-casos" class="casos-grid">
+        <!-- JavaScript inserta aquí las tarjetas filtradas -->
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Proyecto académico — Curso de Desarrollo Web. Datos de ejemplo, no representan casos reales.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reportar un caso — Cali Vigilante</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-top">
+      <div>
+        <h1>Cali Vigilante</h1>
+        <p class="tagline">Registro ciudadano de presuntos abusos de autoridad</p>
+      </div>
+      <button id="boton-tema" class="boton-tema" aria-pressed="false">
+        🌙 Modo oscuro
+      </button>
+    </div>
+
+    <p id="contador-casos" class="contador-casos">0 casos registrados</p>
+
+    <nav class="main-nav">
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="reportar.html">Reportar un caso</a></li>
+        <li><a href="casos.html">Ver casos registrados</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="formulario-completo" aria-labelledby="titulo-formulario-completo">
+      <h2 id="titulo-formulario-completo">Reportar un caso</h2>
+      <p>
+        Diligencia el formulario con el mayor detalle posible. Todos los campos
+        marcados como obligatorios deben completarse antes de enviar.
+      </p>
+
+      <p id="mensaje-exito" class="mensaje-exito" hidden>
+        ✅ Tu reporte fue registrado correctamente. Gracias por documentar este caso.
+      </p>
+
+      <form id="form-reportar-completo" novalidate>
+        <div class="campo">
+          <label for="r-fecha">Fecha del hecho</label>
+          <input type="date" id="r-fecha" name="fecha" required>
+        </div>
+
+        <div class="campo">
+          <label for="r-lugar">Lugar (barrio / comuna)</label>
+          <input
+            type="text"
+            id="r-lugar"
+            name="lugar"
+            placeholder="Ej: Comuna 15, Cali"
+            pattern="^[A-Za-zÀ-ÿ0-9\s,.\-]{3,}$"
+            minlength="3"
+            required
+          >
+          <span class="ayuda">Mínimo 3 caracteres. Solo letras, números, espacios y puntuación básica.</span>
+        </div>
+
+        <div class="campo">
+          <label for="r-descripcion">Descripción del hecho</label>
+          <textarea
+            id="r-descripcion"
+            name="descripcion"
+            rows="5"
+            minlength="20"
+            required
+          ></textarea>
+          <span class="ayuda">Describe el hecho con al menos 20 caracteres: qué pasó, cuándo y quiénes estuvieron involucrados.</span>
+        </div>
+
+        <div class="campo">
+          <label for="r-autoridad">Autoridad involucrada</label>
+          <select id="r-autoridad" name="autoridad" required>
+            <option value="policia">Policía Nacional</option>
+            <option value="esmad">ESMAD</option>
+            <option value="ejercito">Ejército</option>
+            <option value="otra">Otra</option>
+          </select>
+        </div>
+
+        <button type="submit">Enviar reporte</button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Proyecto académico — Curso de Desarrollo Web. Datos de ejemplo, no representan casos reales.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
